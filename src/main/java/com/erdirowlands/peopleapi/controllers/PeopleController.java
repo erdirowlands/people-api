@@ -23,19 +23,21 @@ public class PeopleController {
     @GetMapping("app/people")
     public ResponseEntity<List<Person>> getPeople(@RequestParam(required = false) String sortKey) {
         try {
-            List<Person> people = new ArrayList<>();
+            List<Person> people = this.peopleRepository.findAll();
             if (sortKey != null) {
-                this.peopleService.sortByName(people, sortKey);
+                people = this.peopleService.sortByName(people, sortKey);
             }
             return new ResponseEntity<>(people, HttpStatus.OK);
         } catch (Exception e) {
-            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
     @PostMapping("app/people")
     public ResponseEntity<List<Person>> createPerson(@RequestBody Person person) {
-        Person person = this.peopleService.
+        // Person person = this.peopleService.
+        System.out.println("s");
+        return null;
     }
 
 }
