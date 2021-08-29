@@ -20,4 +20,9 @@ public class PeopleController {
         return new ArrayList<>(peopleService.getPeople(sortKey));
     }
 
+    @PostMapping("/people")
+    public List<Person> addPerson(@RequestParam(required = false) String sortKey) {
+        return new ArrayList<>(peopleService.getPeople(sortKey));
+    }
+
 }
