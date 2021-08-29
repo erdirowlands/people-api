@@ -23,7 +23,10 @@ public class PeopleController {
     @GetMapping("app/people")
     public ResponseEntity<List<Person>> getPeople(@RequestParam(required = false) String sortKey) {
         try {
-            List<Person> people = new ArrayList<>(peopleService.getPeople(sortKey));
+            List<Person> people = new ArrayList<>();
+            if (sortKey != null) {
+                this.peopleService.sortByName(people, sortKey);
+            }
             return new ResponseEntity<>(people, HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
