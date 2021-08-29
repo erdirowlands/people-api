@@ -30,11 +30,14 @@ public class PeopleController {
     }
 
     @PostMapping("app/people")
-    public ResponseEntity<Person> createPerson(@RequestBody Person person) {
-        Person newPerson = peopleRepository.save(new Person(person.getName(), person.getAge(), person.getBalance(),
-                person.getEmail(), person.getAddress()));
-        return new ResponseEntity<>(newPerson, HttpStatus.CREATED);
-
+    public ResponseEntity<Person> createPerson(@RequestBody Person person) throws Exception {
+        try {
+            Person newPerson = peopleRepository.save(new Person(person.getName(), person.getAge(), person.getBalance(),
+                    person.getEmail(), person.getAddress()));
+            return new ResponseEntity<>(newPerson, HttpStatus.CREATED);
+        } catch (Exception e) {
+            throw new Exception("An error has occurred when saving a new person to the database");
+        }
     }
 
 }
