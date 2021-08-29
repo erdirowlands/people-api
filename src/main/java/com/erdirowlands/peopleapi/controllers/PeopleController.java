@@ -31,7 +31,6 @@ public class PeopleController {
         } catch (Exception e) {
             throw new Exception(e.getMessage());
         }
-
     }
 
     @PostMapping("app/people")
