@@ -16,9 +16,10 @@ public class PeopleService {
         this.pepeopleRepository = peopleRepository;
     }
 
+
     public List<Person> getPeople(String sortKey) {
         List<Person> people = this.pepeopleRepository.findAll();
-        if (sortKey != null && !sortKey.isEmpty()) {
+        if (sortKey != null) {
             this.sortByName(people, sortKey);
         }
         return people;
