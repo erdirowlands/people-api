@@ -44,4 +44,16 @@ public class PeopleController {
         }
     }
 
+    @DeleteMapping("/people/{email}")
+    public ResponseEntity<Person> deletePerson(@PathVariable("email") String email) throws Exception {
+        try {
+            peopleRepository.deleteById(email);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
+    }
+
+
+
 }
