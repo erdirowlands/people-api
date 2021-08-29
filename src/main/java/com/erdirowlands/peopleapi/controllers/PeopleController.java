@@ -22,11 +22,16 @@ public class PeopleController {
 
     @GetMapping("app/people")
     public ResponseEntity<List<Person>> getPeople(@RequestParam(required = false) String sortKey) throws Exception {
-        List<Person> people = this.peopleRepository.findAll();
-        if (sortKey != null) {
-            people = this.peopleService.sortByNameOrEmail(people, sortKey);
+        try {
+            List<Person> people = this.peopleRepository.findAll();
+            if (sortKey != null) {
+                people = this.peopleService.sortByNameOrEmail(people, sortKey);
+            }
+            return new ResponseEntity<>(people, HttpStatus.OK);
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
         }
-        return new ResponseEntity<>(people, HttpStatus.OK);
+
     }
 
     @PostMapping("app/people")
@@ -36,7 +41,7 @@ public class PeopleController {
                     person.getEmail(), person.getAddress()));
             return new ResponseEntity<>(newPerson, HttpStatus.CREATED);
         } catch (Exception e) {
-            throw new Exception("An error has occurred when saving a new person to the database");
+            throw new Exception(e.getMessage());
         }
     }
 
