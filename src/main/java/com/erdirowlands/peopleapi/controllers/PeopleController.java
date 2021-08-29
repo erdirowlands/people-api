@@ -44,6 +44,25 @@ public class PeopleController {
         }
     }
 
+    @PutMapping("app/people/{id}")
+    public ResponseEntity<Person> updatePerson(@PathVariable("id") String id, @RequestBody Person person)
+            throws Exception {
+        try {
+            Optional<Person> personData = peopleRepository.findById(id);
+            if (personData.isPresent()) {
+                Person existingPerson = personData.get();
+                Person updatedPerson = new Person(person.getName(), person.getAge(), person.getBalance(),
+                        person.getEmail(), person.getAddress());
+                updatedPerson.set_id(existingPerson.get_id());
+                return new ResponseEntity<>(peopleRepository.save(updatedPerson), HttpStatus.OK);
+            } else {
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            }
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
+    }
+
     @DeleteMapping("app/people/{id}")
     public ResponseEntity<Person> deletePerson(@PathVariable("id") String id) throws Exception {
         try {
@@ -53,7 +72,6 @@ public class PeopleController {
             throw new Exception(e.getMessage());
         }
     }
-
 
 
 }
