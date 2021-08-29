@@ -20,14 +20,16 @@ public class PeopleService {
 
 
     /**
-     * Sorts a list of people alphabetically by name or email
+     * Sorts a list of people alphabetically by name or email.
+     * Deep copies the array and returns a new, sorted array to avoid
+     * argument mutation.
      *
      * @param peopleToSort list to sort.
      * @param sortKey the key to sort by.
-     * @return Returns a new list to avoid mutation of argument list.
+     * @return a new sorted list.
      * @throws Exception if the correct sort key is not specified.
      */
-    public List<Person> sortByName(List<Person> peopleToSort, String sortKey) throws Exception {
+    public List<Person> sortByNameOrEmail(List<Person> peopleToSort, String sortKey) throws Exception {
         List<Person> peopleClone = new ArrayList<>();
         Iterator<Person> iterator = peopleToSort.iterator();
         while (iterator.hasNext()) {
