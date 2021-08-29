@@ -29,7 +29,7 @@ public class PeopleController {
             }
             return new ResponseEntity<>(people, HttpStatus.OK);
         } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>(, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 

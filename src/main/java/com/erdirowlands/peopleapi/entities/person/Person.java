@@ -9,7 +9,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @AllArgsConstructor
 @NoArgsConstructor
 @Document(collection = "people")
-public class Person implements Cloneable{
+public class Person{
 
     private String name;
     private String age;
