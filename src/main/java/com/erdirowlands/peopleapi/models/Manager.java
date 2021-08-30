@@ -1,9 +1,6 @@
 package com.erdirowlands.peopleapi.models;
 
-import com.erdirowlands.peopleapi.entities.person.Person;
 import lombok.Data;
-
-import java.util.List;
 
 @Data
 public class Manager {

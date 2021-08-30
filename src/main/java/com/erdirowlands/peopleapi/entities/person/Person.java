@@ -1,11 +1,11 @@
 package com.erdirowlands.peopleapi.entities.person;
 
+import java.util.List;
 import com.erdirowlands.peopleapi.models.Manager;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.util.List;
 
 @Data
 @Document(collection = "awesomeCollection")
