@@ -10,14 +10,12 @@
 
 3. Using a MongoDB IDE like Studio 3t or Robo 3T
     1. Create a database called `technicalTest`
-    2. Import `awesomeCollection.json` which you can find at the repo root
+    2. Import the `awesomeCollection.json` Collection which you can find at the repo root
 
 4. Run SpringBoot project which will serve the app on localhost:8080 
+5. Make requests to the below endpoints. For resource POST and PUT methods, you will need to provide a Person object in the request body
 
-# Endpoints
-Each endpoint returns either an array or single Person object as JSON
-
-    {
+       {
         "_id": "612bc203e1c21da01c2013e9",
         "name": "James Kirk",
         "age": "50",
@@ -31,8 +29,10 @@ Each endpoint returns either an array or single Person object as JSON
                 "email": "admiralArcher@ufp.com",
                 "address": "any street"
             }
-        ]
-    }
+        ]}
+
+# Endpoints
+Each endpoint returns either an array or single Person object as JSON
 
 ### GET /app/people/ 
 #### JSON: 
