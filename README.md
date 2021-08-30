@@ -35,7 +35,6 @@
 Each endpoint (except DELETE) returns either an array or single Person object as JSON
 
 ### GET /app/people/ 
-#### JSON: 
      Gets all people. Can sort in alphabetical order using name or email e.g.:
      /app/people/?sortkey=name
 
