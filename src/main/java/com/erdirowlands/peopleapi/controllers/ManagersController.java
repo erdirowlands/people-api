@@ -48,7 +48,7 @@ public class ManagersController {
     }
 
     @PostMapping("app/managers")
-    public ResponseEntity<Manager> createPerson(@RequestBody Manager manager) throws Exception {
+    public ResponseEntity<Manager> createManager(@RequestBody Manager manager) throws Exception {
         try {
             Manager newManager = managerRepository.save(new Manager(manager.getName(), manager.getAge(), manager.getEmployees(),
                     manager.getEmail(), manager.getAddress()));
