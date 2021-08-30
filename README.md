@@ -13,7 +13,7 @@
     2. Import the `awesomeCollection.json` Collection which you can find at the repo root
 
 4. Run SpringBoot project which will serve the app on localhost:8080 
-5. Make requests to the below endpoints. For resource POST and PUT methods, you will need to provide a Person object in the request body
+5. Make requests to the below endpoints. For POST and PUT methods , you will need to provide a Person object in the request body
 
        {
         "_id": "612bc203e1c21da01c2013e9",
