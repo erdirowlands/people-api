@@ -3,6 +3,9 @@ package com.erdirowlands.peopleapi.controllers;
 import com.erdirowlands.peopleapi.entities.person.Person;
 import com.erdirowlands.peopleapi.repositories.PeopleRepository;
 import com.erdirowlands.peopleapi.services.PeopleService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -73,6 +76,35 @@ public class PeopleController {
         try {
             peopleRepository.deleteById(id);
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
+    }
+
+    /**
+     * An example of pagination using an unrealistic endpoint: Will return Employees who have no managers. At time of submission,
+     * only two employees have managers, just to demonstrate working pagination with a larger result set.
+     * @param page the page number to be returned
+     * @param size the size of results per page
+     * @return Paginated results of managers with no employees
+     */
+    @GetMapping("app/people/no-managers")
+    public ResponseEntity<Map<String, Object>> findManagersWithNoEmployees(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "4") int size) throws Exception {
+
+        try {
+            Pageable paging = PageRequest.of(page, size);
+            Page<Person> peoplePage = this.peopleRepository.findPeopleByManagersIsNull(paging);
+            List<Person> people = peoplePage.getContent();
+
+            Map<String, Object> response = new HashMap<>();
+            response.put("people", people);
+            response.put("currentPage", peoplePage.getNumber());
+            response.put("totalItems", peoplePage.getTotalElements());
+            response.put("totalPages", peoplePage.getTotalPages());
+
+            return new ResponseEntity<>(response, HttpStatus.OK);
         } catch (Exception e) {
             throw new Exception(e.getMessage());
         }
