@@ -14,6 +14,12 @@ import java.util.List;
 import java.util.Map;
 
 
+/**
+ * Serves as an example of a pagination enabled endpoint.
+ * Response Entity exception handling is provided by a ControllerAdvice class in the utils package,
+ * which will return any exceptions as JSON to the client.
+ */
+
 @RestController
 public class ManagersController {
 
@@ -23,6 +29,13 @@ public class ManagersController {
         this.managerRepository = managerRepository;
     }
 
+    /**
+     * Will return Managers who have no employees.
+     *
+     * @param page the page number to be returned
+     * @param size the size of results per page
+     * @return Paginated results of managers with no employees
+     */
     @GetMapping("app/managers")
     public ResponseEntity<Map<String, Object>> findManagersWithNoEmployees(
             @RequestParam(defaultValue = "0") int page,

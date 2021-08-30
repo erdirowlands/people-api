@@ -9,6 +9,11 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
 
+/**
+ * A CRUD Web API for People.
+ * Response Entity exception handling is provided by a ControllerAdvice class in the utils package,
+ * which will return any exceptions as JSON to the client.
+ */
 @RestController
 public class PeopleController {
 
