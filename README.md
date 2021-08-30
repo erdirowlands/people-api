@@ -32,7 +32,7 @@
         ]}
 
 # Endpoints
-Each endpoint returns either an array or single Person object as JSON
+Each endpoint (except DELETE) returns either an array or single Person object as JSON
 
 ### GET /app/people/ 
 #### JSON: 
