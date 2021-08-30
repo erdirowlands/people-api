@@ -34,8 +34,8 @@ public class PeopleService {
         Iterator<Person> iterator = peopleToSort.iterator();
         while (iterator.hasNext()) {
             Person person = iterator.next();
-            Person newPerson = new Person(person.getName(), person.getAge(), person.getBalance(),
-                    person.getEmail(), person.getAddress());
+            Person newPerson = new Person(person.get_id(), person.getName(), person.getAge(), person.getBalance(),
+                    person.getEmail(), person.getAddress(), person.getManagers());
             peopleClone.add(newPerson);
         }
         if (sortKey.equals("name")) {

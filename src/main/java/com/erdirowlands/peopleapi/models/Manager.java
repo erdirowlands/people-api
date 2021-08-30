@@ -9,17 +9,14 @@ import java.util.List;
 public class Manager {
 
 
-    private String _id;
     private String name;
     private String age;
-    private List<Person> employees;
     private String email;
     private String address;
 
-    public Manager(String name, String age, List<Person> employees, String email, String address) {
+    public Manager(String name, String age, String email, String address) {
         this.name = name;
         this.age = age;
-        this.employees = employees;
         this.email = email;
         this.address = address;
     }

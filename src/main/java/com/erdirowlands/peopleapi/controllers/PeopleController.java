@@ -45,7 +45,7 @@ public class PeopleController {
     public ResponseEntity<Person> createPerson(@RequestBody Person person) throws Exception {
         try {
             Person newPerson = peopleRepository.save(new Person(person.getName(), person.getAge(), person.getBalance(),
-                    person.getEmail(), person.getAddress()));
+                    person.getEmail(), person.getAddress(), person.getManagers()));
             return new ResponseEntity<>(newPerson, HttpStatus.CREATED);
         } catch (Exception e) {
             throw new Exception(e.getMessage());
@@ -60,7 +60,7 @@ public class PeopleController {
             if (personData.isPresent()) {
                 Person existingPerson = personData.get();
                 Person updatedPerson = new Person(person.getName(), person.getAge(), person.getBalance(),
-                        person.getEmail(), person.getAddress());
+                        person.getEmail(), person.getAddress(), person.getManagers());
                 updatedPerson.set_id(existingPerson.get_id());
                 return new ResponseEntity<>(peopleRepository.save(updatedPerson), HttpStatus.OK);
             } else {
